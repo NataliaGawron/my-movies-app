@@ -7,7 +7,6 @@
   "trailingComma": "none",
   "bracketSpacing": true,
   "arrowParens": "always",
-  "proseWrap": "never",
-  "parser": "typescript",
-  "endOfLine": "lf"
+  "endOfLine": "crlf"
 }
+
