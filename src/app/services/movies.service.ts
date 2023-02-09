@@ -13,18 +13,18 @@ export class MoviesService {
 
   constructor(private http: HttpClient) {}
 
-  getMovies(type: string = 'popular') {
+  getMovies(type: string = 'popular', count: number = 12) {
     return this.http.get<MovieDto>(`${this.baseUrl}/movie/${type}?api_key=${this.apiKey}`).pipe(
       switchMap((response) => {
-        return of(response.results);
+        return of(response.results.slice(0, count));
       })
     );
   }
 
-  getTvs(type: string = 'latest') {
+  getTvs(type: string = 'latest', count: number = 12) {
     return this.http.get<TvDto>(`${this.baseUrl}/tv/${type}?api_key=${this.apiKey}`).pipe(
       switchMap((response) => {
-        return of(response.results);
+        return of(response.results.slice(0, count));
       })
     );
   }
