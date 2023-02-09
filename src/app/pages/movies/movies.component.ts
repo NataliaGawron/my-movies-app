@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Movie } from 'src/app/models/movie.model';
+import { Movie, MovieDto } from 'src/app/models/movie.model';
 import { MoviesService } from 'src/app/services/movies.service';
 
 @Component({
@@ -13,6 +13,14 @@ export class MoviesComponent implements OnInit {
   constructor(private moviesService: MoviesService) {}
 
   ngOnInit(): void {
-    this.moviesService.getMovies('popular', 20).subscribe((movies) => (this.movies = movies));
+    this.getPagedMovies(1);
+  }
+
+  getPagedMovies(page: number) {
+    this.moviesService.searchMovies(page).subscribe((movies) => (this.movies = movies));
+  }
+
+  paginate(event: any) {
+    this.getPagedMovies(event.page + 1);
   }
 }
