@@ -1,29 +1,23 @@
 <div class="slider">
-  <div class="slide">
+  <div class="slide" *ngFor="let item of items">
     <div class="slide-bg">
-      <img
-        class="slide-bg-img"
-        src="https://image.tmdb.org/t/p/original/faXT8V80JRhnArTAeYXz0Eutpv9.jpg"
-        alt="movie-img"
-      />
+      <img class="slide-bg-img" [src]="'https://image.tmdb.org/t/p/original' + item.backdrop_path" alt="movie-img" />
     </div>
     <div class="slide-pane">
-      <h2 class="name">Puss in Boots: The Last Wish</h2>
+      <h2 class="name">{{ item.title }}</h2>
       <div class="meta">
         <div class="info">
           <span class="rating">
             <span class="app-icon">star</span>
-            <span class="rating-value">8.6</span>
+            <span class="rating-value">{{ item.vote_average }}</span>
             <span>/10</span>
           </span>
-          <span class="review">3374 Reviews</span>
-          <span class="release">2022</span>
+          <span class="review">{{ item.vote_count }} Reviews</span>
+          <span class="release">{{ item.release_date | date : 'MMMM yyyy' }}</span>
         </div>
       </div>
       <div class="desc mt-6">
-        Puss in Boots discovers that his passion for adventure has taken its toll: He has burned through eight of his
-        nine lives, leaving him with only one life left. Puss sets out on an epic journey to find the mythical Last Wish
-        and restore his nine lives.
+        {{ item.overview }}
       </div>
     </div>
   </div>
