@@ -9,7 +9,7 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   color: $green;
-  background-color: $bgColorLight;
+  background-color: $bgColorBlack;
 }
 
 a {
@@ -40,4 +40,12 @@ a {
 
   /* Support for IE. */
   font-feature-settings: 'liga';
+}
+
+.container-customized {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  flex-wrap: wrap;
+  display: flex;
+  word-wrap: normal;
 }
