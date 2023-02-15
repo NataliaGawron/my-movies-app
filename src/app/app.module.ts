@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
@@ -11,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SliderComponent } from './components/slider/slider.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ItemsBannerComponent } from './components/items-banner/items-banner.component';
-import { MovieItemComponent } from './components/movie-item/movie-item.component';
+import { ItemComponent } from './components/item/item.component';
 import { PaginatorModule } from 'primeng/paginator';
 import { MovieComponent } from './pages/movie/movie.component';
 import { TabViewModule } from 'primeng/tabview';
@@ -30,7 +29,7 @@ import { InputTextModule } from 'primeng/inputtext';
     MoviesComponent,
     SliderComponent,
     ItemsBannerComponent,
-    MovieItemComponent,
+    ItemComponent,
     MovieComponent,
     VideoEmbedComponent,
     GenresComponent
