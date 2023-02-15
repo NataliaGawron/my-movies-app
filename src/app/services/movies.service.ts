@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { TvDto } from '../models/tv-show.model';
 import { of, switchMap } from 'rxjs';
 import { Movie, MovieCredits, MovieDto, MovieImages, MovieVideoDto } from '../models/movie.model';
+import { GenresDto } from '../models/genre';
 
 @Injectable({
   providedIn: 'root'
@@ -33,12 +34,15 @@ export class MoviesService {
     );
   }
 
-  searchMovies(page: number) {
-    return this.http.get<MovieDto>(`${this.baseUrl}/movie/popular?page=${page}&api_key=${this.apiKey}`).pipe(
-      switchMap((response) => {
-        return of(response.results);
-      })
-    );
+  searchMovies(page: number, searchValue?: string) {
+    const uri = searchValue ? '/search/movie' : '/movie/popular';
+    return this.http
+      .get<MovieDto>(`${this.baseUrl}${uri}?page=${page}&query=${searchValue}&api_key=${this.apiKey}`)
+      .pipe(
+        switchMap((res) => {
+          return of(res.results);
+        })
+      );
   }
 
   getMovieImages(id: string) {
@@ -55,6 +59,24 @@ export class MoviesService {
         return of(res.results.slice(0, 12));
       })
     );
+  }
+
+  getMoviesGenres() {
+    return this.http.get<GenresDto>(`${this.baseUrl}/genre/movie/list?api_key=${this.apiKey}`).pipe(
+      switchMap((res) => {
+        return of(res.genres);
+      })
+    );
+  }
+
+  getMoviesByGenre(genreId: string, pageNumber: number) {
+    return this.http
+      .get<MovieDto>(`${this.baseUrl}/discover/movie?with_genres=${genreId}&page=${pageNumber}&api_key=${this.apiKey}`)
+      .pipe(
+        switchMap((res) => {
+          return of(res.results);
+        })
+      );
   }
 
   getTvs(type: string = 'latest', count: number = 12) {
