@@ -49,7 +49,9 @@ export class MoviesComponent implements OnInit {
       if (this.searchValue) {
         this.getPagedMovies(pageNumber, this.searchValue);
       } else {
-        this.getPagedMovies(pageNumber);
+        if (this.searchValue) {
+          this.getPagedMovies(pageNumber, this.searchValue);
+        } else this.getPagedMovies(pageNumber);
       }
     }
   }
