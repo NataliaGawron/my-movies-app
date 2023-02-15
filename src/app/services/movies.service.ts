@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TvDto } from '../models/tv-show.model';
 import { of, switchMap } from 'rxjs';
-import { Movie, MovieDto, MovieVideoDto } from '../models/movie.model';
+import { Movie, MovieDto, MovieImages, MovieVideoDto } from '../models/movie.model';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +39,10 @@ export class MoviesService {
         return of(response.results);
       })
     );
+  }
+
+  getMovieImages(id: string) {
+    return this.http.get<MovieImages>(`${this.baseUrl}/movie/${id}/images?api_key=${this.apiKey}`);
   }
 
   getTvs(type: string = 'latest', count: number = 12) {
