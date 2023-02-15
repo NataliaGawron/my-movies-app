@@ -15,6 +15,8 @@ import { MovieItemComponent } from './components/movie-item/movie-item.component
 import { PaginatorModule } from 'primeng/paginator';
 import { MovieComponent } from './pages/movie/movie.component';
 import { TabViewModule } from 'primeng/tabview';
+import { ImageModule } from 'primeng/image';
+import { CarouselModule } from 'primeng/carousel';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,16 @@ import { TabViewModule } from 'primeng/tabview';
     MovieItemComponent,
     MovieComponent
   ],
-  imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, HttpClientModule, PaginatorModule, TabViewModule],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    PaginatorModule,
+    TabViewModule,
+    ImageModule,
+    CarouselModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
