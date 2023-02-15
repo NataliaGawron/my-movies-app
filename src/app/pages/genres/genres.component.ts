@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { first } from 'rxjs';
-import { Genre } from 'src/app/models/genre';
 import { MoviesService } from 'src/app/services/movies.service';
-import { ActivatedRoute } from '@angular/router';
+import { TvShowsService } from 'src/app/services/tvshows.service';
+import { Genre } from '../../models/genre';
 
 @Component({
   selector: 'app-genres',
@@ -11,19 +10,16 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class GenresComponent implements OnInit {
   genres: Genre[] = [];
-
-  constructor(private moviesService: MoviesService, private route: ActivatedRoute) {}
+  tvShowGenres: Genre[] = [];
+  constructor(private moviesService: MoviesService, private tvShowsService: TvShowsService) {}
 
   ngOnInit(): void {
-    this.route.params.pipe(first()).subscribe(() => {
-      this.getMoviesGenres();
-    });
-  }
-
-  getMoviesGenres() {
     this.moviesService.getMoviesGenres().subscribe((genresData) => {
       this.genres = genresData;
     });
+
+    this.tvShowsService.getTvShowsGenres().subscribe((genresData) => {
+      this.tvShowGenres = genresData;
+    });
   }
 }
-
