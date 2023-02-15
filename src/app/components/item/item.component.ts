@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Movie } from 'src/app/models/movie.model';
+import { Item } from './item';
 import { IMAGES_SIZES } from 'src/app/utils/images.utils';
 
 @Component({
@@ -8,7 +8,7 @@ import { IMAGES_SIZES } from 'src/app/utils/images.utils';
   styleUrls: ['./item.component.scss']
 })
 export class ItemComponent implements OnInit {
-  @Input() itemData: Movie | null = null;
+  @Input() itemData: Item | null = null;
 
   imagesSizes = IMAGES_SIZES;
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Item } from 'src/app/components/item/item';
 import { Movie } from 'src/app/models/movie.model';
-import { Tv } from 'src/app/models/tv-show.model';
 import { MoviesService } from 'src/app/services/movies.service';
 
 @Component({
@@ -12,9 +12,9 @@ export class HomeComponent implements OnInit {
   popularMovies: Movie[] = [];
   upcomingMovies: Movie[] = [];
   topRatedMovies: Movie[] = [];
-  popularTvShows: Tv[] = [];
-  topRatedTvShows: Tv[] = [];
-  airingTodayTvShows: Tv[] = [];
+  popularTvShows: Item[] = [];
+  topRatedTvShows: Item[] = [];
+  airingTodayTvShows: Item[] = [];
 
   constructor(private moviesService: MoviesService) {}
 

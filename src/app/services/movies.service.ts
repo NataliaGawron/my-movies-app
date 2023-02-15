@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { TvDto } from '../models/tv-show.model';
 import { of, switchMap } from 'rxjs';
 import { Movie, MovieCredits, MovieDto, MovieImages, MovieVideoDto } from '../models/movie.model';
 import { GenresDto } from '../models/genre';
+import { TvShowDto } from '../models/tv';
 
 @Injectable({
   providedIn: 'root'
@@ -80,7 +80,7 @@ export class MoviesService {
   }
 
   getTvs(type: string = 'latest', count: number = 12) {
-    return this.http.get<TvDto>(`${this.baseUrl}/tv/${type}?api_key=${this.apiKey}`).pipe(
+    return this.http.get<TvShowDto>(`${this.baseUrl}/tv/${type}?api_key=${this.apiKey}`).pipe(
       switchMap((response) => {
         return of(response.results.slice(0, count));
       })
