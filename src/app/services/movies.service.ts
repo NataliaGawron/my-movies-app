@@ -49,6 +49,14 @@ export class MoviesService {
     return this.http.get<MovieCredits>(`${this.baseUrl}/movie/${id}/credits?api_key=${this.apiKey}`);
   }
 
+  getMovieSimilar(id: string) {
+    return this.http.get<MovieDto>(`${this.baseUrl}/movie/${id}/similar?api_key=${this.apiKey}`).pipe(
+      switchMap((res) => {
+        return of(res.results.slice(0, 12));
+      })
+    );
+  }
+
   getTvs(type: string = 'latest', count: number = 12) {
     return this.http.get<TvDto>(`${this.baseUrl}/tv/${type}?api_key=${this.apiKey}`).pipe(
       switchMap((response) => {
