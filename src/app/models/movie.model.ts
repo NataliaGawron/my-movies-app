@@ -62,3 +62,13 @@ interface BelongsToCollection {
   poster_path: string;
   backdrop_path: string;
 }
+
+export interface MovieVideoDto {
+  id: number;
+  results: MovieVideo[];
+}
+
+export interface MovieVideo {
+  site: string;
+  key: string;
+}

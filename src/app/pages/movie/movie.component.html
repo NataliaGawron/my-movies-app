@@ -49,7 +49,10 @@
       </div>
     </div>
   </p-tabPanel>
-  <p-tabPanel header="Videos">Videos</p-tabPanel>
+  <p-tabPanel header="Videos">
+    <pre>
+      {{ movieVideos | json }}
+    </pre>
+  </p-tabPanel>
   <p-tabPanel header="Photos">Photos</p-tabPanel>
 </p-tabView>
-<pre>{{ movie | json }}</pre>
