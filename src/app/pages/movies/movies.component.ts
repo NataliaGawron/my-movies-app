@@ -17,6 +17,7 @@ export class MoviesComponent implements OnInit {
   constructor(private moviesService: MoviesService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.searchChanged();
     this.route.params.pipe(take(1)).subscribe(({ genreId }) => {
       if (genreId) {
         this.genreId = genreId;
