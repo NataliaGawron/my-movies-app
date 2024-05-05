@@ -2,7 +2,7 @@
   <h2>{{ title }}</h2>
   <div class="grid">
     <div class="sm:col-12 md:col-6 lg:col-3 xl:col-2" *ngFor="let item of items">
-      <app-movie-item [itemData]="item"> </app-movie-item>
+      <app-movie-item *ngIf='item.poster_path' [itemData]="item"> </app-movie-item>
     </div>
   </div>
 </div>
