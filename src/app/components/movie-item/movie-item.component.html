@@ -6,7 +6,7 @@
     </div>
 
     <div class="movie-item-image">
-      <img [src]="imagesSizes.medium + itemData.poster_path" [alt]="itemData.title" />
+      <img [src]="imagesSizes.medium + itemData.poster_path" [alt]="'Poster from movie: ' + itemData.title" />
     </div>
     <div class="movie-item-title">{{ itemData.title }}</div>
   </a>
