@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Movie } from 'src/app/models/movie.model';
+import { Movie, MovieImages } from 'src/app/models/movie.model';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-slider',
@@ -19,12 +20,22 @@ export class SliderComponent implements OnInit {
   @Input() isBanner: boolean = false;
 
   currentSlideIndex: number = 0;
+  isSmallScreen = false;
+
+  constructor(private breakpointObserver: BreakpointObserver) {
+    this.breakpointObserver.observe([
+      Breakpoints.XSmall,
+      Breakpoints.Small
+    ]).subscribe(result => {
+      this.isSmallScreen = result.matches;
+    });
+  }
 
   ngOnInit(): void {
     if (!this.isBanner) {
       setInterval(() => {
         this.currentSlideIndex = ++this.currentSlideIndex % this.items.length;
-      }, 2500);
+      }, 5500);
     }
   }
 }

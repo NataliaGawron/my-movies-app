@@ -4,7 +4,7 @@
     <p-tabPanel header="Overview">
       <div class="grid">
         <div class="col-12 md:col-3 lg:col-3">
-          <img class="poster" [src]="imagesSizes.medium + movie.poster_path" [alt]="movie.title" />
+          <img class="poster" [src]="imagesSizes.medium + movie.poster_path" [alt]="'Photo of the movie poster: ' + movie.title" />
         </div>
         <div class="col-12 md:col-9 lg:col-9">
           <h2>Overview</h2>
@@ -75,7 +75,7 @@
   <p-carousel [numVisible]="5" *ngIf="movieCredits" [value]="movieCredits.cast">
     <ng-template let-actor pTemplate="item">
       <div class="actor" *ngIf="actor.profile_path && actor.name">
-        <img [src]="imagesSizes.medium + actor.profile_path" alt="{{ actor.name }}" />
+        <img [src]="imagesSizes.medium + actor.profile_path" [alt]="'Photo of the actor ' + actor.name" />
         <span>{{ actor.name }}</span>
       </div>
     </ng-template>
